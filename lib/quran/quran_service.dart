@@ -351,11 +351,20 @@ class QuranService {
     6
   ];
 
-  static List<Sura>suras=List.generate(114,(index)=>getSuraFromIndex(index));
+  static List<Sura>suraSearchResult=List.generate(114,(index)=>getSuraFromIndex(index));
   static Sura getSuraFromIndex(int index)=>Sura(englishName: englishSuraNames[index],
       arabicName: arabicSuraNames[index],
       ayatCount: ayatCounts[index],
       num: index+1);
 static Future<String> loadSuraFile(int suraNum)=>
     rootBundle.loadString('assets/text/$suraNum.txt');
+static void searchSura(String value) {
+  suraSearchResult.clear();
+  for (int i = 0; i < 114; i++) {
+if(arabicSuraNames[i].contains(value)||englishSuraNames[i].toLowerCase().contains(value.toLowerCase())){
+  Sura sura=getSuraFromIndex(i);
+  suraSearchResult.add(sura);
+}
+  }
+}
 }
