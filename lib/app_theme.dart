@@ -26,6 +26,15 @@ class AppTheme{
       headlineSmall: TextStyle(fontSize: 24,
           fontWeight: FontWeight.bold,
           color: white),
-    )
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: black,
+      centerTitle: true,
+      titleTextStyle: TextStyle(fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: primary),
+      foregroundColor: primary,
+    ),
+      scaffoldBackgroundColor: black
   );
 }
