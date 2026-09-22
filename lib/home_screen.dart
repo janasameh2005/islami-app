@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/app_theme.dart';
 import 'package:islami_app/nav_bar_selected_icon.dart';
 import 'package:islami_app/nav_bar_unselected_icon.dart';
 import 'package:islami_app/tabs/hadeth_tab.dart';
@@ -49,6 +50,7 @@ List<String>backgroundImagesNames=[
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AppTheme.white,
           currentIndex:currentIndex,
           onTap: (index){
             if(currentIndex==index)return;
@@ -60,7 +62,7 @@ List<String>backgroundImagesNames=[
           items:[
         BottomNavigationBarItem(icon: NavBarUnselectedIcon(imageName:
           'quran'
-          ,),activeIcon:NavBarSelectedIcon(imageName: 'quran',),label:'Quran'),
+          ,),activeIcon:NavBarSelectedIcon(imageName: 'quran',),label:'Quran',),
         BottomNavigationBarItem(icon: NavBarUnselectedIcon(imageName:
         'hadeth'
           ,),activeIcon:NavBarSelectedIcon(imageName: 'hadeth',),label:'Hadeth'),
