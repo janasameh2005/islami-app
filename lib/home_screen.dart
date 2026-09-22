@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/app_theme.dart';
 import 'package:islami_app/nav_bar_selected_icon.dart';
 import 'package:islami_app/nav_bar_unselected_icon.dart';
 import 'package:islami_app/tabs/hadeth_tab.dart';
-import 'package:islami_app/tabs/quran_tab.dart';
+import 'package:islami_app/quran/quran_tab.dart';
 import 'package:islami_app/tabs/radio_tab.dart';
 import 'package:islami_app/tabs/sebha_tab.dart';
 import 'package:islami_app/tabs/time_tab.dart';
@@ -24,12 +25,32 @@ List<Widget>tabs=[
  RadioTab(),
   TimeTab()
 ];
-
+List<String>backgroundImagesNames=[
+  'quran_background',
+  'hadeth_background',
+  'sebha_background',
+  'radio_background',
+  'time_background',
+];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: tabs[currentIndex],
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(image:DecorationImage(image: AssetImage('assets/images/${backgroundImagesNames[currentIndex]}.png'),
+        fit: BoxFit.fill),
+        ),
+        child: Column(
+          children: [
+            Image.asset('assets/images/header.png',height: MediaQuery.sizeOf(context).height*0.2,
+            fit: BoxFit.fitHeight,
+            ),
+            Expanded(child: tabs[currentIndex]),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AppTheme.white,
           currentIndex:currentIndex,
           onTap: (index){
             if(currentIndex==index)return;
@@ -41,7 +62,7 @@ List<Widget>tabs=[
           items:[
         BottomNavigationBarItem(icon: NavBarUnselectedIcon(imageName:
           'quran'
-          ,),activeIcon:NavBarSelectedIcon(imageName: 'quran',),label:'Quran'),
+          ,),activeIcon:NavBarSelectedIcon(imageName: 'quran',),label:'Quran',),
         BottomNavigationBarItem(icon: NavBarUnselectedIcon(imageName:
         'hadeth'
           ,),activeIcon:NavBarSelectedIcon(imageName: 'hadeth',),label:'Hadeth'),
