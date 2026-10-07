@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/app_theme.dart';
 import 'package:islami_app/nav_bar_selected_icon.dart';
 import 'package:islami_app/nav_bar_unselected_icon.dart';
-import 'package:islami_app/tabs/hadeth_tab.dart';
+import 'package:islami_app/hadeth/hadeth_tab.dart';
 import 'package:islami_app/quran/quran_tab.dart';
 import 'package:islami_app/tabs/radio_tab.dart';
 import 'package:islami_app/tabs/sebha_tab.dart';
@@ -42,8 +42,13 @@ List<String>backgroundImagesNames=[
         ),
         child: Column(
           children: [
-            Image.asset('assets/images/header.png',height: MediaQuery.sizeOf(context).height*0.2,
-            fit: BoxFit.fitHeight,
+            Padding(
+              padding:  EdgeInsets.only(top: 8),
+              child: SafeArea(
+                child: Image.asset('assets/images/header.png',height: MediaQuery.sizeOf(context).height*0.2,
+                fit: BoxFit.fitHeight,
+                ),
+              ),
             ),
             Expanded(child: tabs[currentIndex]),
           ],
